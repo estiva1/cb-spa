@@ -1,8 +1,6 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Typography from "@mui/material/Typography";
-
 import { IArticle } from "../../store/article/article.types";
 
 import {
