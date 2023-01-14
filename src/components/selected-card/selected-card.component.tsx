@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IArticle } from "../../store/article/article.types";
@@ -24,6 +24,10 @@ const SelectedCard: FC<SelectedCardProps> = ({ article }) => {
   const { imageUrl, title, summary } = article || {};
   const navigate = useNavigate();
 
+  const onNavigateHandler = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
   return (
     <div>
       <div>
@@ -38,7 +42,7 @@ const SelectedCard: FC<SelectedCardProps> = ({ article }) => {
               <IconContainer>
                 <LeftArrowIcon />
               </IconContainer>
-              <BackToHomepageText onClick={() => navigate(-1)}>
+              <BackToHomepageText onClick={onNavigateHandler}>
                 Back to homepage
               </BackToHomepageText>
             </BackToHomepageContainer>

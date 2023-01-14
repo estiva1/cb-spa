@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import CardMedia from "@mui/material/CardMedia";
 import { INews } from "../../store/news/news.types";
@@ -20,11 +20,15 @@ import {
 
 type CardProps = {
   news: INews;
-}
+};
 
 const Card: FC<CardProps> = ({ news }) => {
   const { imageUrl, publishedAt, title, summary } = news;
   const navigate = useNavigate();
+
+  const onNavigateHandler = useCallback(() => {
+    navigate(`article/${news.id}`);
+  }, [navigate]);
 
   return (
     <CardContainer>
@@ -47,9 +51,7 @@ const Card: FC<CardProps> = ({ news }) => {
         />
 
         <ReadMoreContainer>
-          <ReadMoreText onClick={() => navigate(`article/${news.id}`)}>
-            Read more
-          </ReadMoreText>
+          <ReadMoreText onClick={onNavigateHandler}>Read more</ReadMoreText>
           <IconContainer>
             <RightArrowIcon />
           </IconContainer>
