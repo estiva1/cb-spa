@@ -4,7 +4,7 @@ import axios from "axios";
 import { NewsActionTypes, fetchNewsSuccess, fetchNewsError } from "./news.actions";
 import { INews } from "./news.types";
 
-const getNews = () => axios.get<INews[]>('https://api.spaceflightnewsapi.net/v3/articles?_limit=100')
+const getNews = () => axios.get<INews[]>('https://api.spaceflightnewsapi.net/v3/articles?_limit=50')
 
 function* fetchNewsAsync() {
     try {

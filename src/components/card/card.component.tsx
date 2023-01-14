@@ -18,16 +18,17 @@ import {
   TitleText,
 } from "./card.styles";
 
-interface CardProps {
+type CardProps = {
   news: INews;
 }
 
 const Card: FC<CardProps> = ({ news }) => {
+  const { imageUrl, publishedAt, title, summary } = news;
   const navigate = useNavigate();
 
   return (
     <CardContainer>
-      <CardMedia component="img" height="217" image={news.imageUrl} />
+      <CardMedia component="img" height="217" image={imageUrl} />
 
       <CardContentContainer>
         <PublishedDateContainer>
@@ -35,17 +36,14 @@ const Card: FC<CardProps> = ({ news }) => {
             <CalendarIcon />
           </IconContainer>
           <DateText>
-            {new Date(news.publishedAt.split("T")[0]).toLocaleDateString()}
+            {new Date(publishedAt.split("T")[0]).toLocaleDateString()}
           </DateText>
         </PublishedDateContainer>
 
-        <TitleText
-          gutterBottom
-          dangerouslySetInnerHTML={{ __html: news.title }}
-        />
+        <TitleText gutterBottom dangerouslySetInnerHTML={{ __html: title }} />
         <SummaryText
           gutterBottom
-          dangerouslySetInnerHTML={{ __html: news.summary }}
+          dangerouslySetInnerHTML={{ __html: summary }}
         />
 
         <ReadMoreContainer>

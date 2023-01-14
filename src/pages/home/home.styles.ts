@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 
 export const HomeContainer = styled.div`
@@ -20,7 +21,6 @@ export const HomeContainer = styled.div`
 `;
 
 export const NewsContainer = styled.div`
-  //when max-width > 1300px
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 45px;
@@ -44,5 +44,24 @@ export const HintText = styled(Typography).attrs({
     font-weight: 600;
     line-height: 20px;
     color: #363636;
+  }
+
+  @media screen and (max-width: 850px) {
+    && {
+      font-size: 12px;
+    }
+  }
+`;
+
+export const StyledDivider = styled(Divider).attrs({})`
+  && {
+    width: 100%;
+    margin-bottom: 45px;
+  }
+
+  @media screen and (max-width: 850px) {
+    && {
+      margin-bottom: 30px;
+    }
   }
 `;

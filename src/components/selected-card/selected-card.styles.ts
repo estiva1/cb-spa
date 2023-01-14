@@ -26,6 +26,12 @@ export const PreviewImage = styled.div<PreviewImageProps>`
     background-position: center;
     background-size: cover;
   }
+
+  @media screen and (max-width: 850px) {
+    && {
+      height: 200px;
+    }
+  }
 `;
 
 export const Article = styled(Paper).attrs({})`
@@ -44,7 +50,13 @@ export const Article = styled(Paper).attrs({})`
     border-radius: 5px;
 
     @media screen and (max-width: 850px) {
-      width: 70%;
+      && {
+        width: 270px;
+        margin: 0 25px;
+        padding: 15px;
+        top: 100px;
+        gap: 30px;
+      }
     }
   }
 `;
@@ -58,6 +70,13 @@ export const TitleText = styled(Typography).attrs({})`
     align-self: center;
     color: #363636;
   }
+
+  @media screen and (max-width: 850px) {
+    && {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
 `;
 
 export const SummaryText = styled(Typography).attrs({})`
@@ -66,6 +85,13 @@ export const SummaryText = styled(Typography).attrs({})`
     font-size: 18px;
     line-height: 27px;
     color: #000;
+  }
+
+  @media screen and (max-width: 850px) {
+    && {
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 `;
 
@@ -77,6 +103,10 @@ export const BackToHomepageContainer = styled.div`
   align-items: center;
   gap: 10px;
   cursor: pointer;
+
+  @media screen and (max-width: 850px) {
+    bottom: -40px;
+  }
 `;
 
 export const BackToHomepageText = styled(Typography).attrs({})`
@@ -121,6 +151,13 @@ export const BackToHomepageText = styled(Typography).attrs({})`
     &:after {
       transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
         opacity 0s 0.2s;
+    }
+  }
+
+  @media screen and (max-width: 850px) {
+    && {
+      font-size: 14px;
+      line-height: 22px;
     }
   }
 `;

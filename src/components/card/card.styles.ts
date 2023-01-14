@@ -10,6 +10,10 @@ export const CardContainer = styled.div`
   overflow: hidden;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
   position: relative;
+
+  @media screen and (max-width: 850px) {
+    width: 280px;
+  }
 `;
 
 export const CardContentContainer = styled(CardContent)`
@@ -39,17 +43,36 @@ export const DateText = styled(Typography).attrs({})`
     line-height: 21px;
     color: #363636;
   }
+
+  @media screen and (max-width: 850px) {
+    && {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
 `;
 
-export const TitleText = styled(Typography).attrs({
-  fontSize: "24px",
-  component: "div",
-})`
-  //standard Line Clampin’
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+export const TitleText = styled(Typography).attrs({})`
+  && {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #363636;
+    margin-bottom: 20px;
+
+    //standard Line Clampin’
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 850px) {
+    && {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
 `;
 
 export const SummaryText = styled(Typography).attrs({})`
@@ -64,6 +87,14 @@ export const SummaryText = styled(Typography).attrs({})`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  @media screen and (max-width: 850px) {
+    && {
+      font-size: 14px;
+      line-height: 22px;
+      -webkit-line-clamp: 4;
+    }
   }
 `;
 
@@ -93,7 +124,7 @@ export const ReadMoreText = styled(Typography).attrs({})`
     left: 0;
     right: 0;
     height: 2px;
-    background-color: #5F5F5F;
+    background-color: #5f5f5f;
   }
   &:before {
     opacity: 0;
@@ -120,6 +151,13 @@ export const ReadMoreText = styled(Typography).attrs({})`
     &:after {
       transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
         opacity 0s 0.2s;
+    }
+  }
+
+  @media screen and (max-width: 850px) {
+    && {
+      font-size: 14px;
+      line-height: 22px;
     }
   }
 `;
