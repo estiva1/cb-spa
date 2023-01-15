@@ -1,26 +1,22 @@
 import { put, takeLatest, call, all } from "redux-saga/effects";
-import axios from "axios";
 
-import { NewsActionTypes, fetchNewsSuccess, fetchNewsError } from "./news.actions";
-import { INews } from "./news.types";
+import { NEWS_ACTION_TYPES } from "./news.types";
+import { fetchNewsSuccess, fetchNewsFailed } from "./news.actions";
+import { getNews } from "../../utils/axios/axios.utils";
 
-const getNews = () => axios.get<INews[]>('https://api.spaceflightnewsapi.net/v3/articles?_limit=50')
-
-function* fetchNewsAsync() {
-    try {
-        const { data } = yield call(getNews)
-        yield put(fetchNewsSuccess(data))
-    } catch (error: any) {
-        yield put(fetchNewsError(error.message))      
-    }
+export function* fetchNewsAsync() {
+  try {
+    const { data } = yield call(getNews);
+    yield put(fetchNewsSuccess(data));
+  } catch (error) {
+    yield put(fetchNewsFailed(error as Error));
+  }
 }
 
-function* fetchNewsStart() {
-    yield takeLatest(NewsActionTypes.FETCH_NEWS_START, fetchNewsAsync)
+export function* onFetchNews() {
+  yield takeLatest(NEWS_ACTION_TYPES.FETCH_NEWS_START, fetchNewsAsync);
 }
 
 export function* newsSaga() {
-    yield all([
-        call(fetchNewsStart)
-    ])
+  yield all([call(onFetchNews)]);
 }

@@ -1,30 +1,13 @@
-import { NewsActionTypes } from "./news.actions";
-
-export interface NewsState {
-    news: any[];
-    isFetching: boolean;
-    error: null | string;
-}
-export interface INews {
-    id: number;
-    title: string;
-    imageUrl: string;
-    summary: string;
-    publishedAt: string;
+export enum NEWS_ACTION_TYPES {
+  FETCH_NEWS_START = "FETCH_NEWS_START",
+  FETCH_NEWS_SUCCESS = "FETCH_NEWS_SUCCESS",
+  FETCH_NEWS_FAILED = "FETCH_NEWS_FAILED",
 }
 
-export interface FetchNewsStartAction {
-    type: NewsActionTypes.FETCH_NEWS_START;
-}
-
-export interface FetchNewsSuccessAction {
-    type: NewsActionTypes.FETCH_NEWS_SUCCESS;
-    payload: any[];
-}
-
-export interface FetchNewsErrorAction {
-    type: NewsActionTypes.FETCH_NEWS_ERROR;
-    payload: string;
-}
-
-export type NewsAction = FetchNewsStartAction | FetchNewsSuccessAction | FetchNewsErrorAction
+export type News = {
+  id: number;
+  imageUrl: string;
+  title: string;
+  summary: string;
+  publishedAt: string;
+};

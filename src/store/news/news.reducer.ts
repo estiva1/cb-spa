@@ -1,34 +1,36 @@
-import { NewsActionTypes } from "./news.actions"
-import { NewsState, NewsAction } from "./news.types"
+import { AnyAction } from "redux";
+import {
+  fetchNewsFailed,
+  fetchNewsStart,
+  fetchNewsSuccess,
+} from "./news.actions";
 
-const initialState: NewsState = {
-    news: [],
-    isFetching: false,
-    error: null
-}
+export type NewsState = {
+  readonly news: any[];
+  readonly isFetching: boolean;
+  readonly error: Error | null;
+};
 
-const newsReducer = (state = initialState, action: NewsAction): NewsState => {
-    switch (action.type) {
-        case NewsActionTypes.FETCH_NEWS_START :
-            return {
-                ...state,
-                isFetching: true
-            }
-        case NewsActionTypes.FETCH_NEWS_SUCCESS :
-            return {
-                ...state,
-                isFetching: false,
-                news: action.payload
-            }
-        case NewsActionTypes.FETCH_NEWS_ERROR :
-            return {
-                ...state,
-                isFetching: false,
-                error: action.payload
-            }
-        default :
-            return state
-    }
-}
+export const NEWS_INITIAL_STATE: NewsState = {
+  news: [],
+  isFetching: false,
+  error: null,
+};
 
-export default newsReducer
+export const newsReducer = (
+  state = NEWS_INITIAL_STATE,
+  action: AnyAction
+): NewsState => {
+  if (fetchNewsStart.match(action)) {
+    return { ...state, isFetching: true };
+  }
+  if (fetchNewsSuccess.match(action)) {
+    return { ...state, news: action.payload, isFetching: false };
+  }
+  if (fetchNewsFailed.match(action)) {
+    return { ...state, error: action.payload, isFetching: false };
+  }
+  return state;
+};
+
+export default newsReducer;

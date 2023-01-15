@@ -1,7 +1,9 @@
 import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { News } from "../../store/news/news.types";
+
 import CardMedia from "@mui/material/CardMedia";
-import { INews } from "../../store/news/news.types";
 
 import { ReactComponent as CalendarIcon } from "../../assets/calendar-icon.svg";
 import { ReactComponent as RightArrowIcon } from "../../assets/right-arrow-icon.svg";
@@ -19,7 +21,7 @@ import {
 } from "./card.styles";
 
 type CardProps = {
-  news: INews;
+  news: News;
 };
 
 const Card: FC<CardProps> = ({ news }) => {
