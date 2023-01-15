@@ -11,7 +11,7 @@ export type FetchArticleStart =
 
 export type FetchArticleSuccess = ActionWithPayload<
   ARTICLE_ACTION_TYPES.FETCH_ARTICLE_SUCEES,
-  Article[]
+  Article
 >;
 
 export type FetchArticleFailed = ActionWithPayload<
@@ -25,8 +25,8 @@ export const fetchArticleStart = withMatcher(
 );
 
 export const fetchArticleSuccess = withMatcher(
-  (articleArray: Article[]): FetchArticleSuccess =>
-    createAction(ARTICLE_ACTION_TYPES.FETCH_ARTICLE_SUCEES, articleArray)
+  (articleItem: Article): FetchArticleSuccess =>
+    createAction(ARTICLE_ACTION_TYPES.FETCH_ARTICLE_SUCEES, articleItem)
 );
 
 export const fetchArticleFailed = withMatcher(
