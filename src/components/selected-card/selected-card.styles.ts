@@ -34,7 +34,7 @@ export const PreviewImage = styled.div<PreviewImageProps>`
   }
 `;
 
-export const Article = styled(Paper).attrs({})`
+export const StyledArticle = styled(Paper).attrs({})`
   && {
     position: relative;
     display: flex;

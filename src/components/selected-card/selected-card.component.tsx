@@ -1,15 +1,15 @@
 import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { IArticle } from "../../store/article/article.types";
+import { Article } from "../../store/article/article.types";
 
 import {
-  Article,
   BackToHomepageContainer,
   BackToHomepageText,
   IconContainer,
   PreviewImage,
   SelectedCardContainer,
+  StyledArticle,
   SummaryText,
   TitleText,
 } from "./selected-card.styles";
@@ -17,7 +17,7 @@ import {
 import { ReactComponent as LeftArrowIcon } from "../../assets/left-arrow-icon.svg";
 
 type SelectedCardProps = {
-  article: IArticle;
+  article: Article;
 };
 
 const SelectedCard: FC<SelectedCardProps> = ({ article }) => {
@@ -35,7 +35,7 @@ const SelectedCard: FC<SelectedCardProps> = ({ article }) => {
       </div>
       <div>
         <SelectedCardContainer>
-          <Article>
+          <StyledArticle>
             <TitleText>{title}</TitleText>
             <SummaryText>{summary}</SummaryText>
             <BackToHomepageContainer>
@@ -46,7 +46,7 @@ const SelectedCard: FC<SelectedCardProps> = ({ article }) => {
                 Back to homepage
               </BackToHomepageText>
             </BackToHomepageContainer>
-          </Article>
+          </StyledArticle>
         </SelectedCardContainer>
       </div>
     </div>

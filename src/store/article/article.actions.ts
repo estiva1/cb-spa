@@ -1,14 +1,35 @@
-import { IArticle, ArticleActionTypes } from "./article.types";
+import { ARTICLE_ACTION_TYPES, Article } from "./article.types";
 
-export const fetchArticleStart = (id: any) => ({
-  type: ArticleActionTypes.FETCH_ARTICLE_START,
-  payload: id,
-});
-export const fetchArticleSuccess = (article: IArticle) => ({
-  type: ArticleActionTypes.FETCH_ARTICLE_SUCEES,
-  payload: article,
-});
-export const fetchArticleError = (error: string | null) => ({
-  type: ArticleActionTypes.FETCH_ARTICLE_ERROR,
-  payload: error,
-});
+import {
+  ActionWithPayload,
+  createAction,
+  withMatcher,
+} from "../../utils/reducer/reducer.utils";
+
+export type FetchArticleStart =
+  ActionWithPayload<ARTICLE_ACTION_TYPES.FETCH_ARTICLE_START, string | undefined>;
+
+export type FetchArticleSuccess = ActionWithPayload<
+  ARTICLE_ACTION_TYPES.FETCH_ARTICLE_SUCEES,
+  Article[]
+>;
+
+export type FetchArticleFailed = ActionWithPayload<
+  ARTICLE_ACTION_TYPES.FETCH_ARTICLE_FAILED,
+  Error
+>;
+
+export const fetchArticleStart = withMatcher(
+  (id: string | undefined): FetchArticleStart =>
+    createAction(ARTICLE_ACTION_TYPES.FETCH_ARTICLE_START, id)
+);
+
+export const fetchArticleSuccess = withMatcher(
+  (articleArray: Article[]): FetchArticleSuccess =>
+    createAction(ARTICLE_ACTION_TYPES.FETCH_ARTICLE_SUCEES, articleArray)
+);
+
+export const fetchArticleFailed = withMatcher(
+  (error: Error): FetchArticleFailed =>
+    createAction(ARTICLE_ACTION_TYPES.FETCH_ARTICLE_FAILED, error)
+);

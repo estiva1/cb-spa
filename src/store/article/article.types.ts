@@ -1,39 +1,19 @@
-export enum ArticleActionTypes {
+export enum ARTICLE_ACTION_TYPES {
   FETCH_ARTICLE_START = "FETCH_ARTICLE_START",
   FETCH_ARTICLE_SUCEES = "FETCH_ARTICLE_SUCEES",
-  FETCH_ARTICLE_ERROR = "FETCH_ARTICLE_ERROR",
+  FETCH_ARTICLE_FAILED = "FETCH_ARTICLE_FAILED",
 }
 
-export interface IArticle {
+export type Article = {
   id: any;
   title: string;
   imageUrl: string;
   summary: string;
 }
 
-export interface ArticleState {
+export type ArticleState = {
   id: any;
-  article: any;
+  article: string;
   isFetching: boolean;
-  error: null | string;
+  error: Error | null;
 }
-
-export interface FetchArticleStart {
-  type: ArticleActionTypes.FETCH_ARTICLE_START;
-  payload: any;
-}
-
-export interface FetchArticleSuccess {
-  type: ArticleActionTypes.FETCH_ARTICLE_SUCEES;
-  payload: any;
-}
-
-export interface FetchArticleError {
-  type: ArticleActionTypes.FETCH_ARTICLE_ERROR;
-  payload: string;
-}
-
-export type ArticleAction =
-  | FetchArticleStart
-  | FetchArticleSuccess
-  | FetchArticleError;

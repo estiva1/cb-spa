@@ -1,26 +1,20 @@
-import { put, takeLatest, call, all } from "redux-saga/effects";
-import axios from "axios";
+import { all, call, put, takeLatest } from "typed-redux-saga/macro"; //Babel Macro plugin
 
-import {
-  fetchArticleSuccess,
-  fetchArticleError,
-} from "./article.actions";
-import { IArticle, ArticleActionTypes } from "./article.types";
+import { ARTICLE_ACTION_TYPES } from "./article.types";
+import { fetchArticleSuccess, fetchArticleFailed } from "./article.actions";
+import { getArticle } from "../../utils/axios/axios.utils";
 
-const getArticle = (id: string | number) =>
-  axios.get<IArticle>(`https://api.spaceflightnewsapi.net/v3/articles/${id}`);
-
-function* fetchArticleAsync(action: any) {
+export function* fetchArticleAsync(action: any) {
   try {
     const { data } = yield call(getArticle, action.payload);
     yield put(fetchArticleSuccess(data));
-  } catch (error: any) {
-    yield put(fetchArticleError(error.message));
+  } catch (error) {
+    yield put(fetchArticleFailed(error as Error));
   }
 }
 
-function* fetchArticleStart() {
-  yield takeLatest(ArticleActionTypes.FETCH_ARTICLE_START, fetchArticleAsync);
+export function* fetchArticleStart() {
+  yield takeLatest(ARTICLE_ACTION_TYPES.FETCH_ARTICLE_START, fetchArticleAsync);
 }
 
 export function* articleSaga() {

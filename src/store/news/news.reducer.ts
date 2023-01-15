@@ -32,5 +32,3 @@ export const newsReducer = (
   }
   return state;
 };
-
-export default newsReducer;

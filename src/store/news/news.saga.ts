@@ -1,4 +1,4 @@
-import { put, takeLatest, call, all } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "typed-redux-saga/macro"; //Babel Macro plugin
 
 import { NEWS_ACTION_TYPES } from "./news.types";
 import { fetchNewsSuccess, fetchNewsFailed } from "./news.actions";

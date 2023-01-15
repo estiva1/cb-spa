@@ -1,38 +1,36 @@
-import { ArticleState, ArticleAction, ArticleActionTypes } from "./article.types";
+import { AnyAction } from "redux";
+import {
+  fetchArticleFailed,
+  fetchArticleStart,
+  fetchArticleSuccess,
+} from "./article.actions";
 
-const initialState: ArticleState = {
+export type ArticleState = {
+  readonly id: "";
+  readonly article: any;
+  readonly isFetching: boolean;
+  readonly error: Error | null;
+};
+
+export const ARTICLE_INITIAL_STATE: ArticleState = {
   id: "",
   article: null,
   isFetching: false,
   error: null,
 };
 
-const articleReducer = (
-  state = initialState,
-  action: ArticleAction
+export const articleReducer = (
+  state = ARTICLE_INITIAL_STATE,
+  action: AnyAction
 ): ArticleState => {
-  switch (action.type) {
-    case ArticleActionTypes.FETCH_ARTICLE_START:
-      return {
-        ...state,
-        isFetching: true,
-        id: action.payload,
-      };
-    case ArticleActionTypes.FETCH_ARTICLE_SUCEES:
-      return {
-        ...state,
-        article: action.payload,
-        isFetching: false,
-      };
-    case ArticleActionTypes.FETCH_ARTICLE_ERROR:
-      return {
-        ...state,
-        error: action.payload,
-        isFetching: false,
-      };
-    default:
-      return state;
+  if (fetchArticleStart.match(action)) {
+    return { ...state, isFetching: true };
   }
+  if (fetchArticleSuccess.match(action)) {
+    return { ...state, article: action.payload, isFetching: false };
+  }
+  if (fetchArticleFailed.match(action)) {
+    return { ...state, error: action.payload, isFetching: false };
+  }
+  return state;
 };
-
-export default articleReducer;
