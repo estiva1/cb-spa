@@ -21,7 +21,7 @@ export const PreviewImage = styled.div<PreviewImageProps>`
     height: 245px;
     left: 0px;
     top: 0px;
-    background: #c4c4c4;
+    background: #C4C4C4;
     background-image: ${({ imageUrl }) => `url(${imageUrl})`};
     background-position: center;
     background-size: cover;
@@ -44,8 +44,8 @@ export const Article = styled(Paper).attrs({})`
     padding: 35px 75px 50px; //top, sides, bottom
     top: 150px;
     gap: 50px;
-    background: #fff;
-    border: 1px solid #eaeaea;
+    background: #FFF;
+    border: 1px solid #EAEAEA;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
 
@@ -124,7 +124,7 @@ export const BackToHomepageText = styled(Typography).attrs({})`
     left: 0;
     right: 0;
     height: 2px;
-    background-color: #5f5f5f;
+    background-color: #5F5F5F;
   }
   &:before {
     opacity: 0;

@@ -26,6 +26,7 @@ export const NewsContainer = styled.div`
   grid-gap: 45px;
   place-items: center;
   margin: 0 auto;
+  padding: 0;
 
   @media screen and (max-width: 1300px) {
     grid-template-columns: 1fr 1fr;

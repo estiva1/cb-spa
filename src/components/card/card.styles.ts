@@ -11,6 +11,10 @@ export const CardContainer = styled.div`
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
   position: relative;
 
+  @media screen and (max-width: 1366px) {
+    width: 356px;
+  }
+
   @media screen and (max-width: 850px) {
     width: 280px;
   }
