@@ -8,6 +8,7 @@ import { fetchNewsStart } from "../../store/news/news.actions";
 import Spinner from "../../components/spinner/spinner.component";
 import Search from "../../components/searchbar/searchbar.component";
 import Card from "../../components/card/card.component";
+
 import {
   HintText,
   HomeContainer,
