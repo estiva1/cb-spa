@@ -36,7 +36,7 @@ const Home: FC = () => {
         <HintText>Filter by keywords</HintText>
         <Search searchText={searchText} setSearchText={setSearchText} />
 
-        <HintText mb="5px">
+        <HintText>
           {filteredNews.length > 1 ? "Results" : "Result"}:{" "}
           {filteredNews.length}
         </HintText>

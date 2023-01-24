@@ -45,6 +45,7 @@ export const HintText = styled(Typography).attrs({
     font-weight: 600;
     line-height: 20px;
     color: #363636;
+    margin-bottom: 5px;
   }
 
   @media screen and (max-width: 850px) {

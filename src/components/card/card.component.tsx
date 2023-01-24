@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { News } from "../../store/news/news.types";
 
-import CardMedia from "@mui/material/CardMedia";
-
 import { ReactComponent as CalendarIcon } from "../../assets/calendar-icon.svg";
 import { ReactComponent as RightArrowIcon } from "../../assets/right-arrow-icon.svg";
 
@@ -16,6 +14,7 @@ import {
   PublishedDateContainer,
   ReadMoreContainer,
   ReadMoreText,
+  StyledCardMedia,
   SummaryText,
   TitleText,
 } from "./card.styles";
@@ -34,7 +33,7 @@ const Card: FC<CardProps> = ({ news }) => {
 
   return (
     <CardContainer>
-      <CardMedia component="img" height="217" image={imageUrl} />
+      <StyledCardMedia image={imageUrl} />
 
       <CardContentContainer>
         <PublishedDateContainer>

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 export const CardContainer = styled.div`
   width: 400px;
   height: 530px;
   background: #fff;
-  border: 1px solid #EAEAEA;
+  border: 1px solid #eaeaea;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
@@ -18,6 +19,14 @@ export const CardContainer = styled.div`
 
   @media screen and (max-width: 850px) {
     width: 280px;
+  }
+`;
+
+export const StyledCardMedia = styled(CardMedia).attrs({
+  component: "img",
+})`
+  && {
+    height: 217px;
   }
 `;
 
