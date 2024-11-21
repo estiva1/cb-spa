@@ -6,8 +6,8 @@ export enum NEWS_ACTION_TYPES {
 
 export type News = {
   id: number;
-  imageUrl: string;
+  image_url: string;
   title: string;
   summary: string;
-  publishedAt: string;
+  published_at: string;
 };

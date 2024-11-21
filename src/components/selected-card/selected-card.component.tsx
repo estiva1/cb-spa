@@ -21,7 +21,7 @@ type SelectedCardProps = {
 };
 
 const SelectedCard: FC<SelectedCardProps> = ({ article }) => {
-  const { imageUrl, title, summary } = article || {};
+  const { image_url, title, summary } = article || {};
   const navigate = useNavigate();
 
   const onNavigateHandler = useCallback(() => {
@@ -31,7 +31,7 @@ const SelectedCard: FC<SelectedCardProps> = ({ article }) => {
   return (
     <div>
       <div>
-        <PreviewImage imageUrl={imageUrl} />
+        <PreviewImage imageUrl={image_url} />
       </div>
       <div>
         <SelectedCardContainer>

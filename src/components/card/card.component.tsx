@@ -24,7 +24,7 @@ type CardProps = {
 };
 
 const Card: FC<CardProps> = ({ news }) => {
-  const { imageUrl, publishedAt, title, summary } = news;
+  const { image_url, published_at, title, summary } = news;
   const navigate = useNavigate();
 
   const onNavigateHandler = useCallback(() => {
@@ -33,7 +33,7 @@ const Card: FC<CardProps> = ({ news }) => {
 
   return (
     <CardContainer>
-      <StyledCardMedia image={imageUrl} />
+      <StyledCardMedia image={image_url} />
 
       <CardContentContainer>
         <PublishedDateContainer>
@@ -41,7 +41,7 @@ const Card: FC<CardProps> = ({ news }) => {
             <CalendarIcon />
           </IconContainer>
           <DateText>
-            {new Date(publishedAt.split("T")[0]).toLocaleDateString()}
+            {new Date(published_at.split("T")[0]).toLocaleDateString()}
           </DateText>
         </PublishedDateContainer>
 

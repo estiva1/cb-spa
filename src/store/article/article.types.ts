@@ -7,7 +7,7 @@ export enum ARTICLE_ACTION_TYPES {
 export type Article = {
   id: any;
   title: string;
-  imageUrl: string;
+  image_url: string;
   summary: string;
 }
 

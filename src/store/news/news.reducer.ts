@@ -1,12 +1,9 @@
 import { AnyAction } from "redux";
-import {
-  fetchNewsFailed,
-  fetchNewsStart,
-  fetchNewsSuccess,
-} from "./news.actions";
+import { News } from "./news.types";
+import { fetchNewsFailed, fetchNewsStart, fetchNewsSuccess } from "./news.actions";
 
 export type NewsState = {
-  readonly news: any[];
+  readonly news: News[];
   readonly isFetching: boolean;
   readonly error: Error | null;
 };
@@ -17,10 +14,7 @@ export const NEWS_INITIAL_STATE: NewsState = {
   error: null,
 };
 
-export const newsReducer = (
-  state = NEWS_INITIAL_STATE,
-  action: AnyAction
-): NewsState => {
+export const newsReducer = (state = NEWS_INITIAL_STATE, action: AnyAction): NewsState => {
   if (fetchNewsStart.match(action)) {
     return { ...state, isFetching: true };
   }
